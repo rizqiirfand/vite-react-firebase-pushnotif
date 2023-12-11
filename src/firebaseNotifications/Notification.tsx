@@ -28,7 +28,7 @@ const Notification = () => {
     })
     .catch((err) => console.log("failed: ", err));
 
-  return <>asjh</>;
+  return <Toaster />;
 };
 
 export default Notification;
