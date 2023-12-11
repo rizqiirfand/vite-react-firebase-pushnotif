@@ -20,26 +20,9 @@ initializeApp(firebase_config);
 
 const messaging = getMessaging();
 
-export const registrationService = async () => {
-  try {
-    const registration = await navigator.serviceWorker.register(
-        "/firebase-messaginj-sw.js",
-        {
-          type: "module",
-        }
-    );
-    console.log({ registration });
-    return registration
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 export const requestForToken = async() => {
-  const service = await registrationService();
   return getToken(messaging, {
     vapidKey: firebase_vapidkey_tes,
-    serviceWorkerRegistration: service,
   })
     .then((currentToken) => {
       if (currentToken) {
